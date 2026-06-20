@@ -9,4 +9,4 @@ DROP TABLE accounts;
 
 
 -- +goose Down
-DROP TABLE accounts;
+DROP TABLE accounts; 

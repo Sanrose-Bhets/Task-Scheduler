@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"github.com/joho/godotenv"
+	"github.com/go-chi/chi"
 )
 
 func main(){
@@ -16,6 +18,13 @@ func main(){
 	fmt.Println("Hello, World!")
 
 	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("PORT environment variable is not set") 
+	}
+
+
+	router := chi.NewRouter()
 
 	fmt.Println(port)
 }
