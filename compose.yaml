@@ -1,7 +1,7 @@
 services:
   task-scheduler:
     build: .
-    image: ghcr.io/sanrose-bhets/my-task-scheduler:1.0
+    image: ghcr.io/sanrose-bhets/my-job-grinder:1.1
     ports:
       - "9000:9000"
     env_file:

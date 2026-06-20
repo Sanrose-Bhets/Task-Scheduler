@@ -4,6 +4,6 @@ WORKDIR /home/app
 
 COPY ./app /home/app
 
-RUN go build -o task-scheduler .
+RUN go build -o job-grinder .
 
-CMD ["./task-scheduler"]
+CMD ["./job-grinder"]
