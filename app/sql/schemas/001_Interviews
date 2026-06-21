@@ -1,0 +1,23 @@
+-- +goose Up
+CREATE TABLE interviews (
+    id SERIAL PRIMARY KEY,
+    company VARCHAR(255) NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    department VARCHAR(255) NOT NULL,
+    experience_required VARCHAR(255) NOT NULL,
+    salary_range VARCHAR(255) NOT NULL,
+    employer_email VARCHAR(255) UNIQUE NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    location_Type VARCHAR(255) NOT NULL,
+    job_Type VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    interview_date DATE NOT NULL,
+    interview_time TIME NOT NULL,
+    interview_status VARCHAR(255) NOT NULL,
+    Hiring_Manager VARCHAR(255) NOT NULL
+
+   
+);
+-- +goose Down
+DROP TABLE interviews;

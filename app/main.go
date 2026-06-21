@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"log"
+	"net/http"
 	"github.com/joho/godotenv"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -35,6 +36,20 @@ func main(){
 		AllowCredentials: false,
 		MaxAge:           300,
 	}))
+
+
+
+	srv:= &http.Server{
+		Addr:    ":" + port,
+		Handler: router,
+	}
+
+
+	log.Printf("Server is Starting on Port: %v", port)
+	err := srv.ListenAndServe()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Println(port)
 }
