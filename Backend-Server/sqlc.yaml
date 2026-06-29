@@ -1,0 +1,7 @@
+sql:
+  - schema: "sql/schemas"
+    queries: "sql/query"
+    engine: "postgresql"
+    gen:
+      go:
+        out: "internal/database"

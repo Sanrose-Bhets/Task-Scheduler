@@ -1,11 +1,11 @@
 services:
-  task-scheduler:
-    build: .
-    image: ghcr.io/sanrose-bhets/my-job-grinder:latest
-    ports:
-      - "9000:9000"
-    env_file:
-      - .env
+  # task-scheduler:
+  #   build: .
+  #   image: ghcr.io/sanrose-bhets/my-job-grinder:latest
+  #   ports:
+  #     - "9000:9000"
+  #   env_file:
+  #     - .env
   postgres:
     image: postgres:latest
     container_name: postgress-task-scheduler
@@ -14,7 +14,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: task_scheduler_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
   pgadmin:
