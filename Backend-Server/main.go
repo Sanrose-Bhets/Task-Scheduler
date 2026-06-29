@@ -38,6 +38,16 @@ func main(){
 	}))
 
 
+	v1Router:=chi.NewRouter()
+
+	v1Router.HandleFunc("/health",readinessHandler)
+	v1Router.HandleFunc("/err",errorHandler)
+
+
+	//mounting the v1Router as to enable http request to server
+	router.Mount("/v1", v1Router)
+
+
 
 	srv:= &http.Server{
 		Addr:    ":" + port,

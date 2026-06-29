@@ -1,4 +1,4 @@
-module github.com/sanrose-bhets/Task-Scheduler
+module github.com/sanrose-bhets/Job-Grinder
 
 go 1.26.1
 
