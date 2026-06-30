@@ -34,7 +34,7 @@ jobs:
                 context: .
                 push: true
                 tags: |
-                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.1.${{ github.run_number }}
+                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.0.${{ github.run_number }}
                   ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
                 
 
