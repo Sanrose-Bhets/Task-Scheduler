@@ -8,25 +8,16 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/sanrose-bhets/Job-Grinder
+  IMAGE_NAME: sanrose-bhets/my-job-grinder
 
 jobs:
     build-and-push:
-        runs-on: buntu-latest
+        runs-on: ubuntu-latest
         permissions:
             contents: read
             packages: write
         steps:
-            - uses: actions/checkout@v3
-            - name: Image tag generation
-              id: meta
-              uses: docker/metadata-action@v4
-              with: 
-                images: ${{env.IMAGE_NAME}}
-                tags: |
-                    type=raw,value=latest
-                    type=sha,prefix=,format=short
-            
+            - uses: actions/checkout@v3         
 
             - name: logging in to Github Container Services 
               uses: docker/login-action@v2
@@ -43,8 +34,8 @@ jobs:
                 context: .
                 push: true
                 tags: |
-                  ghcr.io/sanrose-bhets/my-job-grinder:1.1.${{github.run_number}}
-                  ghcr.io/sanrose-bhets/my-job-grinder:latest
-                labels: ${{ steps.meta.outputs.labels }}
+                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.1.${{ github.run_number }}
+                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                
 
         
