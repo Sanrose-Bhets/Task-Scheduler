@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"time"
 
 	"github.com/sanrose-bhets/Job-Grinder/internal/database"
 )
@@ -20,6 +21,30 @@ type Company struct {
 	Companywebsite    string         `json:"site"`
 	Companyemail      string         `json:"mail"`
 	Hiringmanagername sql.NullString `json:"hiringmanager"`
+}
+type Application struct {
+	ID          int32         `json:"id"`
+	Department  string        `json:"department"`
+	Status      string        `json:"status"`
+	Company     int32         `json:"company"`
+	Position    int32         `json:"position"`
+	Interviewid sql.NullInt32 `json:"interviewId"`
+	DateApplied time.Time     `json:"dateApplied"`
+}
+type Interview struct {
+	ID            int32     `json:"id"`
+	Status        string    `json:"status"`
+	Interviewdate time.Time `json:"interviewDate"`
+}
+
+type Job struct {
+	Postionid            int32  `json:"id"`
+	Positionname         string `json:"name"`
+	Companyid            int32  `json:"companyid"`
+	Experiencerequired   string `json:"experienceRequired"`
+	Expectedcompensation string `json:"expectedCompensation"`
+	Employmenttype       string `json:"employmentType"`
+	Joblocationtype      string `json:"jobLocationType"`
 }
 
 func databaseAcctoAcc(dbUser database.Account) Account {
@@ -40,5 +65,37 @@ func databaseComptoComp(dbUser database.Company) Company {
 		Companywebsite:    dbUser.Companywebsite,
 		Companyemail:      dbUser.Companyemail,
 		Hiringmanagername: dbUser.Hiringmanagername,
+	}
+}
+
+func databaseIntvwtoIntvw(dbUser database.Interview) Interview {
+	return Interview{
+		ID:            dbUser.ID,
+		Status:        dbUser.Status,
+		Interviewdate: dbUser.Interviewdate,
+	}
+}
+
+func databaseAppToApp(dbUser database.Application) Application {
+	return Application{
+		ID:          dbUser.ID,
+		Department:  dbUser.Department,
+		Status:      dbUser.Status,
+		Company:     dbUser.Company,
+		Position:    dbUser.Position,
+		Interviewid: dbUser.Interviewid,
+		DateApplied: dbUser.DateApplied,
+	}
+}
+
+func databaseJobtoJob(dbUser database.Job) Job {
+	return Job{
+		Postionid:            dbUser.Postionid,
+		Positionname:         dbUser.Positionname,
+		Companyid:            dbUser.Companyid,
+		Experiencerequired:   dbUser.Experiencerequired,
+		Expectedcompensation: dbUser.Expectedcompensation,
+		Employmenttype:       dbUser.Employmenttype,
+		Joblocationtype:      dbUser.Joblocationtype,
 	}
 }

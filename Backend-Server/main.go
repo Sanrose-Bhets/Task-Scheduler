@@ -69,6 +69,9 @@ func main() {
 
 	v1Router.Post("/accounts", apiCfg.accountCreateHandler)
 	v1Router.Post("/companies", apiCfg.companyCreateHandler)
+	v1Router.Post("/interviews", apiCfg.interviewCreateHandler)
+	v1Router.Post("/jobs", apiCfg.jobCreateHandler)
+	v1Router.Post("/applications", apiCfg.applicationCreateHandler)
 
 	//mounting the v1Router as to enable http request to server
 	router.Mount("/v1", v1Router)

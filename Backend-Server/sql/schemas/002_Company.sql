@@ -1,4 +1,4 @@
--- +goose up
+-- +goose Up
 CREATE TABLE companies (
     companyId SERIAL PRIMARY KEY,
     companyName VARCHAR(255) NOT NULL,
@@ -13,5 +13,5 @@ CREATE TABLE companies (
 
 
 
--- +goose down
+-- +goose Down
 DROP TABLE companies;
