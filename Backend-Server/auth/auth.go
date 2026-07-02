@@ -8,7 +8,7 @@ import (
 
 // Getting a api key from the headers of an http request
 // authorization: Apikey {insert api key}(header is like this)
-func getAPIKey(headers http.Header) (string, error) {
+func GetAPIKey(headers http.Header) (string, error) {
 
 	key := headers.Get("Authorization")
 	if key == "" {
