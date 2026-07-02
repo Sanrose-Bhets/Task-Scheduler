@@ -39,3 +39,12 @@ func (apiCfg *apiConfig) accountCreateHandler(w http.ResponseWriter, r *http.Req
 	respondwithJson(w, 200, databaseAcctoAcc(user))
 
 }
+
+func (apiCfg *apiConfig) accountGetByAPIHandler(w http.ResponseWriter, r *http.Request) {
+
+	// ApiKey, err := getAPIKey(r.Header)
+	// if err != nil {
+	// 	respondwithError(w, 400, fmt.Sprintf("Unable to get API key: %v", err))
+	// 	return
+	// }
+}
