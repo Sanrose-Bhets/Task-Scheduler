@@ -55,3 +55,12 @@ func (apiCfg *apiConfig) accountGetByAPIHandler(w http.ResponseWriter, r *http.R
 	}
 	respondwithJson(w, 200, databaseAcctoAcc(user))
 }
+
+func (apiCfg *apiConfig) accountGetAllHandler(w http.ResponseWriter, r *http.Request) {
+	users, err := apiCfg.DB.GetAllUsers(r.Context())
+	if err != nil {
+		respondwithError(w, 400, fmt.Sprintf("Unable to get users: %v", err))
+		return
+	}
+	respondwithJson(w, 200, users)
+}

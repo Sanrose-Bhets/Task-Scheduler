@@ -35,6 +35,39 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (Account
 	return i, err
 }
 
+const getAllUsers = `-- name: GetAllUsers :many
+SELECT id, name, email, role, apikey from accounts
+`
+
+func (q *Queries) GetAllUsers(ctx context.Context) ([]Account, error) {
+	rows, err := q.db.QueryContext(ctx, getAllUsers)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Account
+	for rows.Next() {
+		var i Account
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Email,
+			&i.Role,
+			&i.Apikey,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getUserbyAPI = `-- name: GetUserbyAPI :one
 SELECT id, name, email, role, apikey from accounts where APIKey = $1
 `
