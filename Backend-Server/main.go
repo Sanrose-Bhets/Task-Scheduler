@@ -66,6 +66,7 @@ func main() {
 
 	v1Router.Get("/health", readinessHandler)
 	v1Router.Get("/err", errorHandler)
+	v1Router.Get("/accounts", apiCfg.accountGetByAPIHandler)
 
 	v1Router.Post("/accounts", apiCfg.accountCreateHandler)
 	v1Router.Post("/companies", apiCfg.companyCreateHandler)
