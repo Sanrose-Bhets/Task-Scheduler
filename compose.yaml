@@ -1,11 +1,11 @@
 services:
-  task-scheduler:
-    image: ghcr.io/sanrose-bhets/my-job-grinder:latest
-    pull_policy: always
-    ports:
-      - "9000:9000"
-    env_file:
-      - .env
+  # task-scheduler:
+  #   image: ghcr.io/sanrose-bhets/my-job-grinder:latest
+  #   pull_policy: always
+  #   ports:
+  #     - "9000:9000"
+  #   env_file:
+  #     - .env
   postgres:
     image: postgres:latest
     container_name: postgress-task-scheduler
